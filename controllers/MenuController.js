@@ -9,6 +9,7 @@ const inquirer = require('inquirer');
         message: "Please choose from an option below: ",
         choices: [
           "Add new contact",
+          "Log current date and time",
           "Exit"
         ]
       }
@@ -23,6 +24,9 @@ const inquirer = require('inquirer');
          case "Add new contact":
            this.addContact();
            break;
+         case "Log current date and time":
+           this.getDate();
+           break;
          case "Exit":
            this.exit();
          default:
@@ -30,7 +34,6 @@ const inquirer = require('inquirer');
            this.main();
        }
      })
-
      .catch((err) => {
        console.log(err);
      });
@@ -46,8 +49,20 @@ const inquirer = require('inquirer');
      this.main();
    }
 
+   getDate(){
+     var dt = new Date();
+     var date = dt.toDateString();
+     var time = dt.toLocaleTimeString();
+     console.log(`Date: ${date} Time: ${time}`);
+     this.main();
+   }
+
    exit(){
      console.log("Thanks for using AddressBloc!");
      process.exit();//how to exit in Node.js. We are calling the global process object's exit method.
+   }
+
+   getContactCount(){
+     return this.contacts.length;
    }
  }
