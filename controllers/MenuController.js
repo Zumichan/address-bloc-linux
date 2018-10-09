@@ -65,4 +65,8 @@ const inquirer = require('inquirer');
    getContactCount(){
      return this.contacts.length;
    }
+
+   remindMe(){
+     return 'Learning is a life-long pursuit.'
+   }
  }
